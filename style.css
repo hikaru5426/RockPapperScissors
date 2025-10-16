@@ -43,10 +43,6 @@ button{
     width:auto;
 }
 
-#btnReset{
-    /* width:200px; */
-}
-
 #rules{
     display:flex;
     flex-direction:column;
