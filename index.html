@@ -6,6 +6,36 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
+
+        <div class="scores">
+            <div class="humanScore">
+                <p>Your score : <span id="nbHumanScore"></span></p>
+            </div>
+            <button id="btnReset">Reset</button>
+            <div class="computerScore">
+                <p>Computer score : <span id="nbComputerScore"></span></p>
+            </div>
+        </div>
+
+        <div class="roundResult">
+            <div class="humanWeapon">
+                <span>Your weapon :</span>
+                <span id="stringHumanWeapon"></span>
+            </div>
+            <div>
+                <span id="stringRoundResult"></span>
+            </div>
+            <div class="computerWeapon">
+                <span>Computer weapon :</span>
+                <span id="stringComputerWeapon"></span>
+            </div>
+        </div>
+
+        <div id="choiceContainer">
+            <button class="btnChoice" id="rockBtn">Rock</button>
+            <button class="btnChoice"id="paperBtn">Paper</button>
+            <button class="btnChoice" id="scissorsBtn">Scissors</button>
+        </div>
         <script src="javascript.js"></script>
     </body>
 </html>
