@@ -2,32 +2,42 @@
 <html lang="eng">
     <head>
         <meta charset="UTF-8">
-        <title>Rock Papper Scissors game</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Rock Paper Scissors Game</title>
         <link rel="stylesheet" href="style.css">
+        <script src="javascript.js" defer></script>
     </head>
     <body>
-
-        <div class="scores">
+        <h1>Rock Paper Scissors Game</h1>
+        <div id="rules">
+            <h2>Rules :</h2>
+            <ul>
+                <li>The first to reach a score of 3 wins</li>
+                <li>Paper > Rock</li>
+                <li>Scissors > Paper</li>
+                <li>Rock > Paper</li>
+            </ul>
+        </div>
+        
+        
+        <div id="scores">
             <div class="humanScore">
-                <p>Your score : <span id="nbHumanScore"></span></p>
+                <p>Your score : <span id="nbHumanScore">0</span></p>
             </div>
-            <button id="btnReset">Reset</button>
             <div class="computerScore">
-                <p>Computer score : <span id="nbComputerScore"></span></p>
+                <p>Computer score : <span id="nbComputerScore">0</span></p>
             </div>
         </div>
 
-        <div class="roundResult">
-            <div class="humanWeapon">
-                <span>Your weapon :</span>
-                <span id="stringHumanWeapon"></span>
+        <div id="roundResult">
+            <div id="humanWeapon" class="weaponColumn">
+                <p>Your weapon : <span id="stringHumanWeapon"></span></p>
+                
             </div>
-            <div>
-                <span id="stringRoundResult"></span>
-            </div>
-            <div class="computerWeapon">
-                <span>Computer weapon :</span>
-                <span id="stringComputerWeapon"></span>
+            <p id="stringRoundResult"></p>
+            <div id="computerWeapon" class="weaponColumn">
+                <p>Computer weapon : <span id="stringComputerWeapon"></span></p>
+                
             </div>
         </div>
 
@@ -36,6 +46,8 @@
             <button class="btnChoice"id="paperBtn">Paper</button>
             <button class="btnChoice" id="scissorsBtn">Scissors</button>
         </div>
-        <script src="javascript.js"></script>
+        <div>
+            <button id="btnReset">Reset</button>
+        </div>
     </body>
 </html>

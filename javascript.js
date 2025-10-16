@@ -66,14 +66,29 @@ function getComputerChoice() {
 
 function reset(){
     humanScore = 0;
-    nbHumanScore.textContent = "";
+    nbHumanScore.textContent = "0";
     stringHumanChoice.textContent = "";
 
     computerScore = 0;
-    nbComputerScore.textContent = "";
+    nbComputerScore.textContent = "0";
     stringComputerChoice.textContent = "";
 
-    roundResult.textContent = "";
+    stringRoundResult.textContent = "";
+
+    delImageIfExist();
+
+
+}
+
+function delImageIfExist(){
+    if(humanWeapon.querySelector(".imgChoice")){
+        let imgHumanChoice = humanWeapon.querySelector(".imgChoice")
+        humanWeapon.removeChild(imgHumanChoice);
+    }
+    if(computerWeapon.querySelector(".imgChoice")){
+        let imgComputerChoice = computerWeapon.querySelector(".imgChoice")
+        computerWeapon.removeChild(imgComputerChoice);
+    }
 }
 
 function whoWin(humanChoice, computerChoice) {
@@ -141,11 +156,14 @@ function playRound(event) {
 
     let imgPathHuman;
     let imgPathComputer;
+
     let imgHumanChoice;
     let imgComputerChoice;
 
 
     if(humanScore < maxScore && computerScore < maxScore) {
+        delImageIfExist();
+
         humanChoice = getHumanChoice(event);
         computerChoice = getComputerChoice();
 
@@ -155,12 +173,17 @@ function playRound(event) {
         imgPathHuman = chooseImage(humanChoice);
         imgHumanChoice = document.createElement("img");
         console.log(`imgPathHuman = ${imgPathHuman}`);
-        imgHumanChoice.src = imgPathHuman
+        imgHumanChoice.src = imgPathHuman;
+        imgHumanChoice.classList.add("imgChoice")
+        humanWeapon.appendChild(imgHumanChoice);
+
 
         imgPathComputer = chooseImage(computerChoice);
         imgComputerChoice = document.createElement("img");
         console.log(`imgPathComputer = ${imgPathComputer}`);
         imgComputerChoice.src = imgPathComputer;
+        imgComputerChoice.classList.add("imgChoice")
+        computerWeapon.appendChild(imgComputerChoice);
 
         whoWin(humanChoice, computerChoice);
         nbHumanScore.textContent = String(humanScore);
@@ -168,9 +191,14 @@ function playRound(event) {
 
     }
     if(humanScore === maxScore){
-        alert("You won !!!")
+        setTimeout(() => {
+            alert("You won !!!");
+        },100)
+        
     } else if(computerScore === maxScore){
-        alert("The computer won ...")
+        setTimeout(() => {
+            alert("The computer won ...");
+        },100)
     }
 }
 
@@ -180,7 +208,10 @@ const maxScore = 3;
 let stringHumanChoice = document.querySelector("#stringHumanWeapon");
 let stringComputerChoice = document.querySelector("#stringComputerWeapon");
 
-let roundResult = document.querySelector(".roundResult");
+let humanWeapon = document.querySelector("#humanWeapon");
+let computerWeapon = document.querySelector("#computerWeapon");
+
+let roundResult = document.querySelector("#roundResult");
 let nbHumanScore = document.querySelector("#nbHumanScore");
 let nbComputerScore = document.querySelector("#nbComputerScore");
 let btnReset = document.querySelector("#btnReset");
@@ -192,4 +223,3 @@ console.log(choices);
 choices.forEach((choice) => {
     choice.addEventListener("click", playRound);
 })
-
